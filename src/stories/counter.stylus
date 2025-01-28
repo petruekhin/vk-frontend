@@ -1,0 +1,94 @@
+// mixin to reduce duplication in code and calculations
+counterSize(sz, padd = 0px)
+	// want to set minimum full width including padding
+	// but not including border, that's why I could not set box-sizing
+	min-width sz - 2*padd
+	height sz
+	line-height sz
+	padding 0 padd
+
+.counter
+	// common styles
+	position relative
+	border-radius 999px
+	font-family Roboto
+	display inline-block
+	text-align center
+	padding 0
+	user-select none
+
+	// default variants (use "custom" for custom styling)
+	&.primary
+		background #2FB675
+		color white
+		border-color white
+	&.secondary
+		background rgba(131, 102, 86, 0.12)
+		color black
+		border-color white
+
+	// I wanted to make it look as close to the design as possible
+	// but here are other options to implement the border:
+	// - use `box-shadow 0 0 0 {n}px #{color}`, to set inner width,
+	//       but make border not participate in size/position calculations
+	// - use `box-sizing content-box` (and recalculate `min-width`),
+	//       to make border size included in wanted width
+	&.stroke
+		border-style solid
+
+	// setup pulse animation (only left to set content property to show it)
+	// do this separately from setting that content property to reduce duplication
+	&.pulse
+		&::before, &::after
+			z-index -1
+			background inherit
+			border-radius 999px
+			width 100%
+			height 100%
+			position absolute
+			top 0
+			left 0
+			animation-name pulse
+			animation-duration 2s
+			animation-iteration-count infinite
+		&::after
+			animation-delay 0.25s
+
+	// size-dependent styles
+	&.size-8
+		counterSize(8px)
+		border-width 1px
+		font-size 0
+		// show pulse if enabled
+		&.pulse::before, &.pulse::after
+			content ''
+	&.size-12
+		counterSize(12px)
+		border-width 2px
+		font-size 0
+		// show pulse if enabled
+		&.pulse::before, &.pulse::after
+			content ''
+	&.size-16
+		counterSize(16px, 4px)
+		font-size 11px
+		border-width 2px
+	&.size-20
+		counterSize(20px, 4px)
+		font-size 13px
+		border-width 2px
+	&.size-24
+		counterSize(24px, 6px)
+		font-size 15px
+		border-width 3px
+
+@keyframes pulse
+	0%
+		opacity 0.2
+		transform scale(1)
+	50%
+		opacity 0
+		transform scale(3)
+	100%
+		opacity 0
+		transform scale(3)
