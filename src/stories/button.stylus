@@ -1,0 +1,82 @@
+.button
+	// common styles
+	position relative
+	border-radius 999px
+	font-family Roboto
+	text-align center
+	padding 0
+	display inline-flex
+	align-items center
+	user-select none
+	&:not(.loading):not(.disabled)
+		cursor pointer
+
+	// default variants (use "custom" for custom styling)
+	&.primary
+		background #2FB675
+		color white
+		border-color white
+		.loader circle
+			stroke white
+	&.secondary
+		background rgba(131, 102, 86, 0.12)
+		color black
+		border-color white
+		.loader circle
+			stroke black
+
+	// size-dependent styles
+	&.size-28
+		padding 6px 10px
+		gap 4px
+		font-size 13px
+		line-height 13px
+		.loader
+			width 16px
+			height 16px
+	&.size-36
+		padding 8px 12px
+		gap 6px
+		font-size 15px
+		line-height 15px
+		.loader
+			width 20px
+			height 20px
+	&.size-56
+		padding 16px 16px
+		gap 8px
+		font-size 17px
+		line-height 17px
+		.loader
+			width 20px
+			height 20px
+
+
+
+// my custom loader for fun
+circle-radius = 10
+circle-length = 2 * PI * circle-radius
+
+// style and animate loader separately, so it is easier to replace
+.loader circle
+	fill transparent
+	stroke-width 3px
+	animation-duration 2s
+	animation-name loader
+	animation-iteration-count infinite
+	animation-timing-function linear
+
+@keyframes loader
+	0%
+		stroke-dasharray (circle-length * 0.25), (circle-length * 0.75)
+		stroke-dashoffset 0
+	25%
+		stroke-dasharray (circle-length * 0.5), (circle-length * 0.5)
+	50%
+		stroke-dasharray (circle-length * 0.75), (circle-length * 0.25)
+		stroke-dashoffset circle-length
+	75%
+		stroke-dasharray (circle-length * 0.5), (circle-length * 0.5)
+	100%
+		stroke-dasharray (circle-length * 0.25), (circle-length * 0.75)
+		stroke-dashoffset (2 * circle-length)
