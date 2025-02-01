@@ -30,5 +30,5 @@ export const Counter = ({
     [`size-${size}`]: true,
   })
  
-  return <div className={className}>{quantity}</div>
+  return <span className={className}>{quantity}</span>
 }
