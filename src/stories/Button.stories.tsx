@@ -14,7 +14,14 @@ type Story = StoryObj<typeof Button>;
 export const ButtonLoadingStory: Story = {
   name: "ButtonLoading",
   render(_, __) {
-    return <Button>Loading...</Button>
+    return <Button loading variant="primary">Loading</Button>
+  },
+};
+
+export const ButtonDisabledStory: Story = {
+  name: "ButtonDisabled",
+  render(_, __) {
+    return <Button disabled variant="primary">Disabled</Button>
   },
 };
 
@@ -36,7 +43,6 @@ export const ButtonTextCounterStory: Story = {
 
   render(args) {
     let [quantity, setQuantity] = useState(95)
-    console.log(quantity)
     return <Button onClick={() => setQuantity(quantity + 1)} {...args} disabled={quantity>99} >
       <span>Text</span>
       <Button.Counter quantity={quantity} size={24} />
