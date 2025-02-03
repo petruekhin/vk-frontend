@@ -1,15 +1,5 @@
-# Basic Style Dictionary
+ # Тестовое задание на стажировку VK
 
-This example code is bare-bones to show you what this framework can do. If you have the style-dictionary module installed globally, you can `cd` into this directory and run:
+На данный момент сверстаны сами компоненты, реализованы главные задумки.
 
-```bash
-npx style-dictionary build
-```
-
-Otherwise, install Style Dictionary locally for this project first, `cd` into this directory and run:
-
-```bash
-npm init -y && npm install style-dictionary
-```
-
-and then run the above command.
+После наступления дедлайна работа также будет продолжаться, но она будет нацелена на второстепенные элементы, такие как тесты, более удобные story, а также более подробное описание README.md
