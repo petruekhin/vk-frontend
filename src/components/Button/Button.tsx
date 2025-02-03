@@ -26,7 +26,7 @@ export const Button = ({
   const loaderSize = buttonToLoaderSize[size]
   return (
     <ButtonContext.Provider value={{size, variant}}>
-      <button {...attrs} className={fullClassName}>
+      <button {...attrs} disabled={attrs.disabled || loading} className={fullClassName}>
         <div className="button__content">{children}</div>
         <div className="button__loader">
           <Loader width={loaderSize} height={loaderSize} variant={variant} />

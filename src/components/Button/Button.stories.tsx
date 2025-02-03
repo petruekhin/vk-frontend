@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, ButtonBaseProps } from "./Button";
-import React from "react";
+import { Button, ButtonBaseProps, ButtonProps } from "./Button";
+import React, { useState } from "react";
 import { CounterBaseProps } from "../Counter";
 
 const ButtonWithCounter = ({ quantity, stroke, pulse, ...props }:
-  ButtonBaseProps & Pick<CounterBaseProps, 'quantity' | 'stroke' | 'pulse'>) => {
+  ButtonBaseProps & Pick<CounterBaseProps, 'quantity' | 'stroke' | 'pulse'> & Pick<ButtonProps, 'onClick'>) => {
   return (<Button {...props}>
     <Button.Label>Click me!</Button.Label>
     <Button.Counter quantity={quantity} stroke={stroke} pulse={pulse} /></Button>
@@ -57,7 +57,14 @@ export const ButtonWithCounterStory: StoryObj<typeof ButtonWithCounter> = {
 
   name: "ButtonWithCounter",
 
-  render(args) {
-    return <ButtonWithCounter {...args} />
+  render({ loading, ...args }) {
+    const [loadingOverride, setLoadingOverride] = useState(false)
+
+    function handleClick() {
+      setLoadingOverride(true)
+      setTimeout(() => setLoadingOverride(false), 3000)
+    }
+
+    return <ButtonWithCounter {...args} loading={loading || loadingOverride} onClick={handleClick} />
   }
 }

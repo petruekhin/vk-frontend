@@ -38,19 +38,18 @@
 		opacity 0
 		pointer-events none
 
-	&:not(:disabled):not(.loading)
+	&:not(:disabled,.loading)
 		cursor pointer
-
 		&:hover::after
 			opacity 0.2
 
-		&:active
-			transform scale(0.85)
-			&::after
-				opacity 0.4
+	&:active:not(:disabled)
+		transform scale(0.85)
+		&::after
+			opacity 0.4
 
-		&:disabled::after
-			opacity 0.5
+	&:disabled:not(.loading)::after
+		opacity 0.5
 
 	&__content
 		display flex
