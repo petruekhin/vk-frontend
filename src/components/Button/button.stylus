@@ -100,15 +100,10 @@
 			--colors-counter-background s('var(--colors-button-%s-counter-background)', variant)
 			--colors-counter-text s('var(--colors-button-%s-counter-text)', variant)
 			.button__loader::before
-				background s('linear-gradient(to right, \
-					var(--colors-button-%s-text) 0%, \
-					transparent 15%, \
-					transparent 35%, \
-					var(--colors-button-%s-text) 50%, \
-					transparent 65%, \
-					transparent 85%, \
-					var(--colors-button-%s-text) 100% \
-				)', variant, variant, variant)
+				background s('repeating-linear-gradient(to right, \
+					transparent 0%, \
+					var(--colors-button-%s-text) 15%, \
+					transparent 30%, transparent 50%)', variant)
 
 	for size in 28 36 56
 		&.size-{size}
