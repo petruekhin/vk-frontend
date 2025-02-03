@@ -41,16 +41,16 @@
 		opacity 0
 		pointer-events none
 
-	&:not(:disabled,.loading):hover::after
+	&:not(:disabled):not(.loading):hover::after
 		opacity 0.2
 
-	&:not(:disabled,.loading):active::after
+	&:not(:disabled):not(.loading):active::after
 		opacity 0.4
 
 	&:disabled::after
 		opacity 0.5
 
-	&:not(:disabled,.loading)
+	&:not(:disabled):not(.loading)
 		cursor pointer
 
 	&__content
@@ -74,6 +74,18 @@
 		height 100%
 		justify-content center
 		align-items center
+		&::before
+			content ''
+			position absolute
+			top 0
+			left -100%
+			width 200%
+			height 100%
+			opacity 0.12
+			animation-name shimmer
+			animation-duration 1s
+			animation-timing-function linear
+			animation-iteration-count infinite
 
 	&.loading > &__content
 		visibility hidden
@@ -87,6 +99,16 @@
 			--colors-button-text s('var(--colors-button-%s-text)', variant)
 			--colors-counter-background s('var(--colors-button-%s-counter-background)', variant)
 			--colors-counter-text s('var(--colors-button-%s-counter-text)', variant)
+			.button__loader::before
+				background s('linear-gradient(to right, \
+					var(--colors-button-%s-text) 0%, \
+					transparent 15%, \
+					transparent 35%, \
+					var(--colors-button-%s-text) 50%, \
+					transparent 65%, \
+					transparent 85%, \
+					var(--colors-button-%s-text) 100% \
+				)', variant, variant, variant)
 
 	for size in 28 36 56
 		&.size-{size}
@@ -98,3 +120,8 @@
 					font-size s('var(--fonts-button-%d-size)', size)
 					line-height s('var(--fonts-button-%d-size)', size)
 
+@keyframes shimmer
+	from
+		left -100%
+	to
+		left 0%

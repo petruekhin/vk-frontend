@@ -49,7 +49,7 @@ export const ButtonTextCounterStory: Story = {
       setTimeout(() => {
         setQuantity(quantity + 50)
         setLoading(false)
-      }, 500)
+      }, 2000)
     }
     return <Button onClick={handleClick} {...args} disabled={quantity>99} loading={loading} >
       <Button.Label>Что сделать</Button.Label>
