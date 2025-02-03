@@ -14,7 +14,7 @@
     "secondary": { "background": { "value": "{colors.lightgray}" }, "text": { "value": "{colors.black}" } },
 
     "Button": {
-      "primary": { "Counter": { "background": { "value": "{colors.white}" } } },
+      "primary": { "Counter": { "background": { "value": "{colors.bgwhite}" } } },
       "secondary": { "Counter": { "background": { "value": "{colors.bggray}" } } }
     },
 

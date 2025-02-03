@@ -35,7 +35,7 @@ export const ButtonTextStory: Story = {
 export const ButtonTextCounterStory: Story = {
   args: {
     loading: true,
-    variant: "secondary",
+    variant: "primary",
     size: 56,
   },
 
