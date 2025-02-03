@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, ButtonBaseProps, ButtonProps } from "./Button";
-import React, { useState } from "react";
-import { CounterBaseProps, CounterProps } from "../Counter";
+import { Button, ButtonBaseProps } from "./Button";
+import React from "react";
+import { CounterBaseProps } from "../Counter";
 
 const ButtonWithCounter = ({ quantity, stroke, pulse, ...props }:
   ButtonBaseProps & Pick<CounterBaseProps, 'quantity' | 'stroke' | 'pulse'>) => {
   return (<Button {...props}>
-    <Button.Label>Hello</Button.Label>
+    <Button.Label>Click me!</Button.Label>
     <Button.Counter quantity={quantity} stroke={stroke} pulse={pulse} /></Button>
   )
 }
