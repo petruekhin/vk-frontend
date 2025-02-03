@@ -2,14 +2,15 @@ import React from 'react'
 import classNames from 'classnames'
 import './counter.stylus'
 
-export type CounterProps = {
+export type CounterBaseProps = {
   variant: 'primary' | 'secondary' | 'custom'
   size: 8 | 12 | 16 | 20 | 24
   stroke: boolean
   pulse: boolean
-  className: string
   quantity: string | number
-} & React.DOMAttributes<HTMLSpanElement>
+}
+
+export type CounterProps = Partial<CounterBaseProps>  & React.DOMAttributes<HTMLSpanElement> & React.HTMLAttributes<HTMLSpanElement>
 
 export const Counter = ({
   size = 8,
@@ -18,7 +19,7 @@ export const Counter = ({
   quantity = '',
   variant,
   ...attrs
-}: Partial<CounterProps>) => {
+}: CounterProps) => {
   if (typeof quantity === 'string') quantity = quantity.substring(0, 3)
   if (typeof quantity === 'number' && quantity > 99) quantity = '99+'
 

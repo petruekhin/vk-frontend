@@ -4,15 +4,17 @@ import classNames from 'classnames'
 import './button.stylus'
 import { Loader } from '../Loader'
 
-export type ButtonProps = {
+export type ButtonBaseProps = {
   variant?: 'primary' | 'secondary'
   size: 28 | 36 | 56
   loading: boolean
-} & React.DOMAttributes<HTMLButtonElement> & React.ButtonHTMLAttributes<HTMLButtonElement>
+}
 
-const ButtonContext = React.createContext<Pick<ButtonProps, 'size' | 'variant'>>({ size: 36, variant: 'primary' })
+export type ButtonProps = Partial<ButtonBaseProps> & React.DOMAttributes<HTMLButtonElement> & React.ButtonHTMLAttributes<HTMLButtonElement>
 
-const buttonToLoaderSize: Record<ButtonProps['size'], number> = { 28: 16, 36: 20, 56: 24 }
+const ButtonContext = React.createContext<Pick<ButtonBaseProps, 'size' | 'variant'>>({ size: 36, variant: 'primary' })
+
+const buttonToLoaderSize: Record<ButtonBaseProps['size'], number> = { 28: 16, 36: 20, 56: 24 }
 export const Button = ({
   variant,
   children,
@@ -34,7 +36,7 @@ export const Button = ({
   )
 }
 
-const buttonToCounterSize: Record<ButtonProps['size'], CounterProps['size']> = { 28: 16, 36: 20, 56: 24 }
+const buttonToCounterSize: Record<ButtonBaseProps['size'], CounterProps['size']> = { 28: 16, 36: 20, 56: 24 }
 Button.Counter = ({ variant, ...props }: Partial<CounterProps>) => {
   const context = useContext(ButtonContext)
   const size = buttonToCounterSize[context.size]
