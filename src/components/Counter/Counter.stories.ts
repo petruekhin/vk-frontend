@@ -15,7 +15,7 @@ export const CounterStory: Story = {
   args: {
     pulse: true,
     variant: "primary",
-    size: 8,
+    size: 12,
     quantity: 0,
     stroke: true,
   }

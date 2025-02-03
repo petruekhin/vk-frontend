@@ -1,0 +1,75 @@
+:root
+	for variant in primary secondary
+		--colors-button-{variant}-background s('var(--colors-%s-background)', variant)
+		--colors-button-{variant}-text s('var(--colors-%s-text)', variant)
+		--colors-button-{variant}-counter-text s('var(--colors-counter-%s-text)', variant)
+	--colors-button-primary-counter-background s('var(--colors-bgwhite)', variant)
+	--colors-button-secondary-counter-background s('var(--colors-bggray)', variant)
+
+	--colors-button-outline var(--colors-outline)
+
+
+.button
+	// common styles
+	position relative
+	border none
+	font-family Roboto
+	text-align center
+	padding 0
+	display block
+	align-items center
+	user-select none
+	overflow hidden
+	max-width 100%
+
+	background var(--colors-button-background)
+	color var(--colors-button-text)
+
+	&:not(:disabled,.loading)
+		cursor pointer
+
+	&__content
+		display flex
+		justify-content center
+		align-items center
+		text-overflow ellipsis
+		white-space nowrap
+		.button__label
+			flex 1 0 0
+			min-width 0
+			text-overflow ellipsis
+			overflow hidden
+
+	&__loader
+		display none
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 100%
+		justify-content center
+		align-items center
+
+	&.loading > &__content
+		visibility hidden
+
+	&.loading > &__loader
+		display flex
+
+	for variant in primary secondary
+		&.{variant}
+			--colors-button-background s('var(--colors-button-%s-background)', variant)
+			--colors-button-text s('var(--colors-button-%s-text)', variant)
+			--colors-counter-background s('var(--colors-button-%s-counter-background)', variant)
+			--colors-counter-text s('var(--colors-button-%s-counter-text)', variant)
+
+	for size in 28 36 56
+		&.size-{size}
+			border-radius s('var(--borders-button-%d-radius)', size)
+			padding s('var(--spacing-button-%d-padding)', size)
+			.button__content
+				gap s('var(--spacing-button-%d-gap)', size)
+				.button__label
+					font-size s('var(--fonts-button-%d-size)', size)
+					line-height s('var(--fonts-button-%d-size)', size)
+

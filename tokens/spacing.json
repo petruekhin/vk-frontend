@@ -1,0 +1,16 @@
+{
+  "spacing": {
+    "Button": {
+      "28": { "padding": { "value": "6px 10px" }, "gap": { "value": "4px" } },
+      "36": { "padding": { "value": "8px 12px" }, "gap": { "value": "6px" } },
+      "56": { "padding": { "value": "16px 16px" }, "gap": { "value": "8px" } }
+    },
+    "Counter": {
+      "8": { "padding": { "value": "0" } },
+      "12": { "padding": { "value": "0" } },
+      "16": { "padding": { "value": "0 4px" } },
+      "20": { "padding": { "value": "0 4px" } },
+      "24": { "padding": { "value": "0 6px" } }
+    }
+  }
+}

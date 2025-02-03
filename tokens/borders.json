@@ -1,0 +1,16 @@
+{
+  "borders": {
+    "Button": {
+      "28": { "radius": { "value": "10px" } },
+      "36": { "radius": { "value": "12px" } },
+      "56": { "radius": { "value": "16px" } }
+    },
+    "Counter": {
+      "8": { "width": { "value": "1px" } },
+      "12": { "width": { "value": "2px" } },
+      "16": { "width": { "value": "2px" } },
+      "20": { "width": { "value": "2px" } },
+      "24": { "width": { "value": "3px" } }
+    }
+  }
+}

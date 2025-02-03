@@ -1,0 +1,16 @@
+{
+  "fonts": {
+    "Button": {
+      "28": { "size": { "value": "13px" } },
+      "36": { "size": { "value": "15px" } },
+      "56": { "size": { "value": "17px" } }
+    },
+    "Counter": {
+      "8": { "size": { "value": "0" } },
+      "12": { "size": { "value": "0" } },
+      "16": { "size": { "value": "11px" } },
+      "20": { "size": { "value": "13px" } },
+      "24": { "size": { "value": "15px" } }
+    }
+  }
+}

@@ -12,11 +12,11 @@ export type CounterProps = {
 } & React.DOMAttributes<HTMLSpanElement>
 
 export const Counter = ({
-  variant = 'primary',
   size = 8,
   stroke = false,
   pulse = false,
   quantity = '',
+  variant,
   ...attrs
 }: Partial<CounterProps>) => {
   if (typeof quantity === 'string') quantity = quantity.substring(0, 3)
@@ -27,5 +27,5 @@ export const Counter = ({
   // but then it would be split between JS and CSS, so I decided to move it there
 
   const fullClassName = classNames('counter', { pulse, stroke }, variant, `size-${size}`, attrs.className)
-  return <span className={fullClassName} {...attrs}>{quantity}</span>
+  return <span {...attrs} className={fullClassName}>{quantity}</span>
 }

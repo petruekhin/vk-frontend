@@ -1,0 +1,74 @@
+:root
+	for variant in primary secondary
+		--colors-counter-{variant}-background s('var(--colors-%s-background)', variant)
+		--colors-counter-{variant}-text s('var(--colors-%s-text)', variant)
+		--colors-counter-{variant}-border s('var(--colors-white)', variant)
+
+.counter
+	// common styles
+	position relative
+	border-radius 999px
+	font-family Roboto
+	display inline-flex
+	align-items center
+	justify-content center
+	text-align center
+	padding 0
+	user-select none
+	box-sizing border-box
+
+	background var(--colors-counter-background)
+	color var(--colors-counter-text)
+
+	// default variants (use "custom" for custom styling)
+	for variant in primary secondary
+		&.{variant}
+			--colors-counter-background s('var(--colors-counter-%s-background)', variant)
+			--colors-counter-text s('var(--colors-counter-%s-text)', variant)
+
+	// size-dependent styles
+	for size in 8 12 16 20 24
+		&.size-{size}
+			height s('%dpx', size)
+			min-width s('%dpx', size)
+			border-width s('var(--borders-counter-%d-width)', size)
+			padding s('var(--spacing-counter-%d-padding)', size)
+			font-size s('var(--fonts-counter-%d-size)', size)
+			line-height s('var(--fonts-counter-%d-size)', size)
+			if size <= 12
+				&.pulse::before, &.pulse::after
+					content ''
+
+	// "border" or "box-sizing: border-box" could be used to change how size is calculated
+	&.stroke
+		border-style solid
+
+	// setup pulse animation (only left to set content property to show it)
+	// do this separately from setting that content property to reduce duplication
+	&.pulse
+		&::before, &::after
+			z-index -1
+			background inherit
+			border-radius 999px
+			width 100%
+			height 100%
+			position absolute
+			top 0
+			left 0
+			animation-name pulse
+			animation-duration 2s
+			animation-iteration-count infinite
+		&::after
+			animation-delay 0.25s
+
+
+@keyframes pulse
+	0%
+		opacity 0.2
+		transform scale(1)
+	50%
+		opacity 0
+		transform scale(3)
+	100%
+		opacity 0
+		transform scale(3)

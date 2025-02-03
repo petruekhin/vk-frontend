@@ -28,7 +28,7 @@ export const ButtonDisabledStory: Story = {
 export const ButtonTextStory: Story = {
   name: "ButtonText",
   render(_, __) {
-    return <Button>Button text</Button>
+    return <Button variant="primary">Button text</Button>
   },
 };
 
@@ -36,15 +36,23 @@ export const ButtonTextCounterStory: Story = {
   args: {
     loading: true,
     variant: "secondary",
-    size: 28,
+    size: 56,
   },
 
   name: "ButtonTextCounter",
 
   render(args) {
-    let [quantity, setQuantity] = useState(95)
-    return <Button onClick={() => setQuantity(quantity + 1)} {...args} disabled={quantity>99} >
-      <span>Text</span>
+    let [quantity, setQuantity] = useState(3)
+    let [loading, setLoading] = useState(false)
+    function handleClick() {
+      setLoading(true)
+      setTimeout(() => {
+        setQuantity(quantity + 50)
+        setLoading(false)
+      }, 500)
+    }
+    return <Button onClick={handleClick} {...args} disabled={quantity>99} loading={loading} >
+      <Button.Label>Что сделать</Button.Label>
       <Button.Counter quantity={quantity} size={24} />
     </Button>
   }

@@ -1,0 +1,23 @@
+{
+  "colors": {
+    "orange": { "value": "#FF7700" },
+    "green": { "value": "#2FB675" },
+    "gray": { "value": "rgba(131, 102, 86)" },
+    "bggray":  { "value": "rgba(131, 102, 86, 0.12)" },
+    "lightgray": { "value": "#F0EDEB" },
+    "outline": { "value": "#0099FF" },
+    "white": { "value": "#FFFFFF" },
+    "bgwhite": { "value": "rgba(255, 255, 255, 0.12)" },
+    "black": { "value": "#000000" },
+    
+    "primary": { "background": { "value": "{colors.orange}" }, "text": { "value": "{colors.white}" } },
+    "secondary": { "background": { "value": "{colors.lightgray}" }, "text": { "value": "{colors.black}" } },
+
+    "Button": {
+      "primary": { "Counter": { "background": { "value": "{colors.white}" } } },
+      "secondary": { "Counter": { "background": { "value": "{colors.bggray}" } } }
+    },
+
+    "Counter": { "primary": { "background": { "value": "{colors.green}" } } }
+  }
+}

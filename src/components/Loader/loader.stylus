@@ -1,0 +1,31 @@
+// these constants are also used in Loader.tsx
+circle-radius = 10
+circle-length = 2 * PI * circle-radius
+
+.loader
+	for variant in primary secondary
+		&.{variant}
+			--loader-color s('var(--colors-%s-text)', variant)
+	circle
+		fill transparent
+		stroke-width 3px
+		stroke var(--loader-color)
+		animation-duration 2s
+		animation-name loader
+		animation-iteration-count infinite
+		animation-timing-function linear
+
+@keyframes loader
+	0%
+		stroke-dasharray (circle-length * 0.25), (circle-length * 0.75)
+		stroke-dashoffset 0
+	25%
+		stroke-dasharray (circle-length * 0.5), (circle-length * 0.5)
+	50%
+		stroke-dasharray (circle-length * 0.75), (circle-length * 0.25)
+		stroke-dashoffset circle-length
+	75%
+		stroke-dasharray (circle-length * 0.5), (circle-length * 0.5)
+	100%
+		stroke-dasharray (circle-length * 0.25), (circle-length * 0.75)
+		stroke-dashoffset (2 * circle-length)
