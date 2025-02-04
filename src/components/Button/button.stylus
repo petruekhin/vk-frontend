@@ -41,6 +41,10 @@
 	&:not(:disabled,.loading)
 		cursor pointer
 
+	&:hover:not(:disabled)
+		.button__content
+			transform scale(1.05)
+
 	&:hover:not(:disabled)::after
 		opacity 0.2
 
@@ -54,6 +58,7 @@
 		opacity 0.5
 
 	&__content
+		transition transform .5s cubic-bezier(0, -0.3, 0.5, 1.3)
 		display flex
 		justify-content center
 		align-items center
