@@ -63,8 +63,10 @@
 		opacity 0.08
 		border-radius 999px
 
-	&:active:not(:disabled) &__ripple
+	&:not(:disabled) &__ripple
 		transition width .5s cubic-bezier(0, -0.3, 0.5, 1.3), height .5s cubic-bezier(0, -0.3, 0.5, 1.3)
+
+	&:active:not(:disabled) &__ripple
 		width 200%
 		height 200%
 
