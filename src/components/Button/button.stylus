@@ -47,7 +47,6 @@
 
 	&:hover:not(:disabled)::after
 		opacity 0.2
-
 	&:active:not(:disabled)
 		transform scale(0.95)
 
@@ -71,14 +70,19 @@
 			overflow hidden
 
 	&__loader
-		display none
+		.button__spinner
+			position absolute
+			top 100%
+			left 50%
+			transform translate(-50%, 0) rotateY(180deg)
+			transform-origin center center 8px
+		visibility hidden
+		display block
 		position absolute
 		top 0
 		left 0
 		width 100%
 		height 100%
-		justify-content center
-		align-items center
 		&::before
 			content ''
 			position absolute
@@ -87,16 +91,18 @@
 			width 100%
 			height 100%
 			opacity 0.12
-			animation-name shimmer
-			animation-duration 2.5s
-			animation-timing-function linear
+			animation 2s linear 0s shimmer
 			animation-iteration-count infinite
 
 	&.loading > &__content
 		visibility hidden
 
 	&.loading > &__loader
-		display flex
+		visibility visible
+		.button__spinner
+			transition all .5s cubic-bezier(0, -0.3, 0.5, 1.3)
+			transform translate(-50%, -50%) rotateY(0deg)
+			top 50%
 
 	for variant in primary secondary
 		&.{variant}
@@ -124,4 +130,4 @@
 	from
 		left -50%
 	to
-		left 350%
+		left 250%

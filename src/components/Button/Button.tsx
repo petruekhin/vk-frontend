@@ -29,7 +29,7 @@ export const Button = ({
       <button {...attrs} disabled={attrs.disabled || loading} className={fullClassName}>
         <div className="button__content">{children}</div>
         <div className="button__loader">
-          <Loader width={loaderSize} height={loaderSize} variant={variant} />
+          <Loader width={loaderSize} height={loaderSize} variant={variant} className="button__spinner" />
         </div>
       </button>
     </ButtonContext.Provider>
