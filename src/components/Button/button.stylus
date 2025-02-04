@@ -34,7 +34,7 @@
 		left 0
 		width 100%
 		height 100%
-		background white
+		background var(--colors-button-text)
 		opacity 0
 		pointer-events none
 
@@ -46,15 +46,16 @@
 			transform scale(1.05)
 
 	&:hover:not(:disabled)::after
-		opacity 0.2
+		opacity 0.12
+
 	&:active:not(:disabled)
 		transform scale(0.95)
 
 	&:active:not(:disabled)::after
-		opacity 0.4
+		opacity 0.2
 
 	&:disabled:not(.loading)::after
-		opacity 0.5
+		opacity 0.4
 
 	&__content
 		transition transform .5s cubic-bezier(0, -0.3, 0.5, 1.3)
