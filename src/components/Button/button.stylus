@@ -40,12 +40,14 @@
 
 	&:not(:disabled,.loading)
 		cursor pointer
-		&:hover::after
+
+	&:hover:not(:disabled)::after
 			opacity 0.2
 
 	&:active:not(:disabled)
 		transform scale(0.85)
-		&::after
+
+	&:active:not(:disabled)::after
 			opacity 0.4
 
 	&:disabled:not(.loading)::after

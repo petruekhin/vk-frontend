@@ -48,8 +48,12 @@ export const ButtonStory: Story = {
 };
 
 export const ButtonWithCounterStory: StoryObj<typeof ButtonWithCounter> = {
+  argTypes: {
+    quantity: { control: 'object' }
+  },
+
   args: {
-    loading: true,
+    loading: false,
     variant: "primary",
     size: 56,
     quantity: 90,

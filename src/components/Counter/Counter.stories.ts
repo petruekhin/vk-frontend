@@ -13,6 +13,9 @@ const meta: Meta<typeof Counter> = {
       control: "select",
       options: [8, 12, 16, 20, 24],
     },
+    quantity: {
+      control: "object",
+    },
   },
 };
 
