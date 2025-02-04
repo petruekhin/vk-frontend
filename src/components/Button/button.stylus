@@ -72,6 +72,7 @@
 	&__loader
 		.button__spinner
 			position absolute
+			opacity 0.6
 			top 100%
 			left 50%
 			transform translate(-50%, 0) rotateY(180deg)
@@ -100,6 +101,7 @@
 	&.loading > &__loader
 		visibility visible
 		.button__spinner
+			opacity 1
 			transition all .5s cubic-bezier(0, -0.3, 0.5, 1.3)
 			transform translate(-50%, -50%) rotateY(0deg)
 			top 50%
