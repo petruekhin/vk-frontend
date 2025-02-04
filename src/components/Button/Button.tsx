@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Counter, CounterProps } from '../Counter'
 import classNames from 'classnames'
 import './button.stylus'
@@ -19,14 +19,27 @@ export const Button = ({
   variant,
   children,
   loading,
+  onMouseDown,
   size = 36,
   ...attrs
 }: Partial<ButtonProps>) => {
   const fullClassName = classNames('button', variant, { loading }, `size-${size}`, attrs.className)
   const loaderSize = buttonToLoaderSize[size]
+  const ripple = useRef<HTMLDivElement>(null)
+  const button = useRef<HTMLButtonElement>(null)
+  const handleMouseDown: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    const rect = button.current!.getBoundingClientRect()
+    const offsetX = e.clientX - rect.left
+    const offsetY = e.clientY - rect.top
+    ripple.current!.style.left = `${offsetX}px`
+    ripple.current!.style.top = `${offsetY}px`
+    onMouseDown?.(e)
+  }
+
   return (
     <ButtonContext.Provider value={{size, variant}}>
-      <button {...attrs} disabled={attrs.disabled || loading} className={fullClassName}>
+      <button {...attrs} disabled={attrs.disabled || loading} className={fullClassName} ref={button} onMouseDown={handleMouseDown}>
+        <div className="button__ripple" ref={ripple}></div>
         <div className="button__content">{children}</div>
         {typeof loading !== 'undefined' && <div className="button__loader">
           <Loader width={loaderSize} height={loaderSize} variant={variant} className="button__spinner" />
