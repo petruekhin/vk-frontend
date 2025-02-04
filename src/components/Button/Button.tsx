@@ -18,8 +18,8 @@ const buttonToLoaderSize: Record<ButtonBaseProps['size'], number> = { 28: 16, 36
 export const Button = ({
   variant,
   children,
+  loading,
   size = 36,
-  loading = false,
   ...attrs
 }: Partial<ButtonProps>) => {
   const fullClassName = classNames('button', variant, { loading }, `size-${size}`, attrs.className)
@@ -28,9 +28,9 @@ export const Button = ({
     <ButtonContext.Provider value={{size, variant}}>
       <button {...attrs} disabled={attrs.disabled || loading} className={fullClassName}>
         <div className="button__content">{children}</div>
-        <div className="button__loader">
+        {typeof loading !== 'undefined' && <div className="button__loader">
           <Loader width={loaderSize} height={loaderSize} variant={variant} className="button__spinner" />
-        </div>
+        </div>}
       </button>
     </ButtonContext.Provider>
   )
