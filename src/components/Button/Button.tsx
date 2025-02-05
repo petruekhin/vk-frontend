@@ -21,12 +21,21 @@ export type ButtonBaseProps = {
   disabled?: boolean
 }
 
-export type ButtonProps = ButtonBaseProps & React.DOMAttributes<HTMLButtonElement> & React.ButtonHTMLAttributes<HTMLButtonElement>
+export type ButtonProps = ButtonBaseProps &
+  React.DOMAttributes<HTMLButtonElement> &
+  React.ButtonHTMLAttributes<HTMLButtonElement>
 
-export type ButtonContextData = { size: ButtonSize, variant?: ButtonVariant }
-const ButtonContext = React.createContext<ButtonContextData>({ size: 36, variant: 'primary' })
+export type ButtonContextData = { size: ButtonSize; variant?: ButtonVariant }
+const ButtonContext = React.createContext<ButtonContextData>({
+  size: 36,
+  variant: 'primary',
+})
 
-const buttonToLoaderSize: Record<ButtonSize, number> = { 28: 16, 36: 20, 56: 24 }
+const buttonToLoaderSize: Record<ButtonSize, number> = {
+  28: 16,
+  36: 20,
+  56: 24,
+}
 
 /**
   В `<Button>` также принимаются props `<button>`<br>
@@ -41,7 +50,13 @@ export const Button = ({
   size = 36,
   ...attrs
 }: ButtonProps) => {
-  const fullClassName = classNames('button', variant, { loading }, `size-${size}`, attrs.className)
+  const fullClassName = classNames(
+    'button',
+    variant,
+    { loading },
+    `size-${size}`,
+    attrs.className,
+  )
   const loaderSize = buttonToLoaderSize[size]
   const ripple = useRef<HTMLDivElement>(null)
   const button = useRef<HTMLButtonElement>(null)
@@ -55,19 +70,36 @@ export const Button = ({
   }
 
   return (
-    <ButtonContext.Provider value={{size, variant}}>
-      <button {...attrs} disabled={attrs.disabled || loading} className={fullClassName} ref={button} onMouseDown={handleMouseDown}>
+    <ButtonContext.Provider value={{ size, variant }}>
+      <button
+        {...attrs}
+        disabled={attrs.disabled || loading}
+        className={fullClassName}
+        ref={button}
+        onMouseDown={handleMouseDown}
+      >
         <div className="button__ripple" ref={ripple}></div>
         <div className="button__content">{children}</div>
-        {typeof loading !== 'undefined' && <div className="button__loader">
-          <Loader width={loaderSize} height={loaderSize} variant={variant} className="button__spinner" />
-        </div>}
+        {typeof loading !== 'undefined' && (
+          <div className="button__loader">
+            <Loader
+              width={loaderSize}
+              height={loaderSize}
+              variant={variant}
+              className="button__spinner"
+            />
+          </div>
+        )}
       </button>
     </ButtonContext.Provider>
   )
 }
 
-const buttonToCounterSize: Record<ButtonSize, CounterSize> = { 28: 16, 36: 20, 56: 24 }
+const buttonToCounterSize: Record<ButtonSize, CounterSize> = {
+  28: 16,
+  36: 20,
+  56: 24,
+}
 Button.Counter = ({ variant, ...props }: Partial<CounterProps>) => {
   const context = useContext(ButtonContext)
   const size = buttonToCounterSize[context.size]
@@ -75,7 +107,8 @@ Button.Counter = ({ variant, ...props }: Partial<CounterProps>) => {
   return <Counter {...props} className={fullClassName} size={size} />
 }
 
-export type LabelProps = React.DOMAttributes<HTMLSpanElement> & React.HTMLAttributes<HTMLSpanElement>
+export type LabelProps = React.DOMAttributes<HTMLSpanElement> &
+  React.HTMLAttributes<HTMLSpanElement>
 Button.Label = (props: LabelProps) => {
   const fullClassName = classNames('button__label', props.className)
   return <span {...props} className={fullClassName}></span>

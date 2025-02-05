@@ -14,10 +14,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
     "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "stylus": "^0.64.0"
+    "stylus": "^0.64.0",
+    "vitest": "^3.0.5"
   },
   "scripts": {
     "dev": "vite",

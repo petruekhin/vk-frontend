@@ -21,7 +21,9 @@ export type CounterBaseProps = {
   quantity?: string | number
 }
 
-export type CounterProps = CounterBaseProps & React.DOMAttributes<HTMLSpanElement> & React.HTMLAttributes<HTMLSpanElement>
+export type CounterProps = CounterBaseProps &
+  React.DOMAttributes<HTMLSpanElement> &
+  React.HTMLAttributes<HTMLSpanElement>
 
 /**
   В `<Counter>` также принимаются props `<span>`
@@ -41,6 +43,16 @@ export const Counter = ({
   // if ([8,12].includes(size)) { quantity = '' } else { pulse = false }
   // but then it would be split between JS and CSS, so I decided to move it there
 
-  const fullClassName = classNames('counter', { pulse, stroke }, variant, `size-${size}`, attrs.className)
-  return <span {...attrs} className={fullClassName}>{quantity}</span>
+  const fullClassName = classNames(
+    'counter',
+    { pulse, stroke },
+    variant,
+    `size-${size}`,
+    attrs.className,
+  )
+  return (
+    <span {...attrs} className={fullClassName}>
+      {quantity}
+    </span>
+  )
 }

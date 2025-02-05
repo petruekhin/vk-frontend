@@ -8,8 +8,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       stylus: {
-        additionalData: `@import "${path.resolve(__dirname, 'build/css/variables.css')}"`
-      }
-    }
-  }
+        additionalData: `@import "${path.resolve(__dirname, 'build/css/variables.css')}"`,
+      },
+    },
+  },
 })
