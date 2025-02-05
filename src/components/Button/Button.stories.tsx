@@ -14,18 +14,8 @@ const ButtonWithCounter = ({ quantity, stroke, pulse, ...props }:
 const meta: Meta<typeof Button> = {
   title: "Button",
   component: Button,
-  argTypes: {
-    size: {
-      control: 'select',
-      options: [28, 36, 56],
-    },
-    variant: {
-      control: 'select',
-      options: ['primary', 'secondary', undefined],
-    },
-    loading: { control: 'boolean' },
-    disabled: { control: 'boolean' },
-  }
+  parameters: { layout: 'centered', },
+  tags: ['autodocs'],
 };
 
 export default meta;

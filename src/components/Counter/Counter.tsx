@@ -2,15 +2,26 @@ import React from 'react'
 import classNames from 'classnames'
 import './counter.stylus'
 
+export type CounterVariant = 'primary' | 'secondary'
+export type CounterSize = 8 | 12 | 16 | 20 | 24
+
 export type CounterBaseProps = {
-  variant: 'primary' | 'secondary' | 'custom'
-  size: 8 | 12 | 16 | 20 | 24
-  stroke: boolean
-  pulse: boolean
-  quantity: string | number
+  /** Вариант стиля счетчика по умолчанию */
+  variant?: CounterVariant
+  /** Размер кнопки */
+  size?: CounterSize
+  /** Обводка счетчика */
+  stroke?: boolean
+  /** Анимация пульсации */
+  pulse?: boolean
+  /**
+    Значение счетчика<br>
+    Число, либо строка (в кавычках)
+  */
+  quantity?: string | number
 }
 
-export type CounterProps = Partial<CounterBaseProps>  & React.DOMAttributes<HTMLSpanElement> & React.HTMLAttributes<HTMLSpanElement>
+export type CounterProps = CounterBaseProps & React.DOMAttributes<HTMLSpanElement> & React.HTMLAttributes<HTMLSpanElement>
 
 export const Counter = ({
   size = 8,

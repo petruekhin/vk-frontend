@@ -4,19 +4,8 @@ import { Counter } from "./Counter";
 const meta: Meta<typeof Counter> = {
   title: "Counter",
   component: Counter,
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["primary", "secondary", undefined],
-    },
-    size: {
-      control: "select",
-      options: [8, 12, 16, 20, 24],
-    },
-    quantity: {
-      control: "object",
-    },
-  },
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
 };
 
 export default meta;

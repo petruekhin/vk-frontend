@@ -1,20 +1,32 @@
 import React, { useContext, useRef } from 'react'
-import { Counter, CounterProps } from '../Counter'
+import { Counter, CounterProps, CounterSize } from '../Counter'
 import classNames from 'classnames'
 import './button.stylus'
 import { Loader } from '../Loader'
 
+export type ButtonVariant = 'primary' | 'secondary'
+export type ButtonSize = 28 | 36 | 56
+
 export type ButtonBaseProps = {
-  variant?: 'primary' | 'secondary'
-  size: 28 | 36 | 56
-  loading: boolean
+  /** Вариант стиля кнопки по умолчанию */
+  variant?: ButtonVariant
+  /** Размер кнопки */
+  size?: ButtonSize
+  /**
+     Состояние загрузки<br>
+     Спиннер не отрисовывается если `undefined`
+  */
+  loading?: boolean
+  /** Отключение кнопки */
+  disabled?: boolean
 }
 
-export type ButtonProps = Partial<ButtonBaseProps> & React.DOMAttributes<HTMLButtonElement> & React.ButtonHTMLAttributes<HTMLButtonElement>
+export type ButtonProps = ButtonBaseProps & React.DOMAttributes<HTMLButtonElement> & React.ButtonHTMLAttributes<HTMLButtonElement>
 
-const ButtonContext = React.createContext<Pick<ButtonBaseProps, 'size' | 'variant'>>({ size: 36, variant: 'primary' })
+export type ButtonContextData = { size: ButtonSize, variant?: ButtonVariant }
+const ButtonContext = React.createContext<ButtonContextData>({ size: 36, variant: 'primary' })
 
-const buttonToLoaderSize: Record<ButtonBaseProps['size'], number> = { 28: 16, 36: 20, 56: 24 }
+const buttonToLoaderSize: Record<ButtonSize, number> = { 28: 16, 36: 20, 56: 24 }
 export const Button = ({
   variant,
   children,
@@ -22,7 +34,7 @@ export const Button = ({
   onMouseDown,
   size = 36,
   ...attrs
-}: Partial<ButtonProps>) => {
+}: ButtonProps) => {
   const fullClassName = classNames('button', variant, { loading }, `size-${size}`, attrs.className)
   const loaderSize = buttonToLoaderSize[size]
   const ripple = useRef<HTMLDivElement>(null)
@@ -49,7 +61,7 @@ export const Button = ({
   )
 }
 
-const buttonToCounterSize: Record<ButtonBaseProps['size'], CounterProps['size']> = { 28: 16, 36: 20, 56: 24 }
+const buttonToCounterSize: Record<ButtonSize, CounterSize> = { 28: 16, 36: 20, 56: 24 }
 Button.Counter = ({ variant, ...props }: Partial<CounterProps>) => {
   const context = useContext(ButtonContext)
   const size = buttonToCounterSize[context.size]
