@@ -23,6 +23,9 @@ export type CounterBaseProps = {
 
 export type CounterProps = CounterBaseProps & React.DOMAttributes<HTMLSpanElement> & React.HTMLAttributes<HTMLSpanElement>
 
+/**
+  В `<Counter>` также принимаются props `<span>`
+*/
 export const Counter = ({
   size = 8,
   stroke = false,

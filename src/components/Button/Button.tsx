@@ -27,6 +27,12 @@ export type ButtonContextData = { size: ButtonSize, variant?: ButtonVariant }
 const ButtonContext = React.createContext<ButtonContextData>({ size: 36, variant: 'primary' })
 
 const buttonToLoaderSize: Record<ButtonSize, number> = { 28: 16, 36: 20, 56: 24 }
+
+/**
+  В `<Button>` также принимаются props `<button>`<br>
+  В `<Button.Counter>` принимаются props `<Counter>` (кроме `size`, `variant`)<br>
+  В `<Button.Label>` принимаются props `<span>`
+*/
 export const Button = ({
   variant,
   children,
