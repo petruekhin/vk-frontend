@@ -8,6 +8,12 @@
 По возможности, я бы хотел услышать фидбек по коду вне зависимости от того,
 пройду я на следующий этап, или нет.
 
+## Ссылки
+
+- [Storybook LIVE](https://petruekhin.github.io/)
+- [Button.tsx](./src/components/Button/Button.tsx)
+- [Counter.tsx](./src/components/Counter/Counter.tsx)
+
 ## Использованные технологии
 
 При выполнении задания я использовал Stylus, Storybook, Vite, Vitest, React Testing Library,
