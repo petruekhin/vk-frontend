@@ -22,6 +22,7 @@
     "jsdom": "^26.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "style-dictionary": "^4.3.2",
     "stylus": "^0.64.0",
     "vitest": "^3.0.5"
   },
@@ -33,6 +34,7 @@
     "test:watch": "vitest --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "style-dictionary": "style-dictionary build",
     "init-msw": "msw init public/"
   },
   "devDependencies": {

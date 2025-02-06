@@ -14,7 +14,6 @@
 	// common styles
 	position relative
 	border none
-	font-family Roboto
 	text-align center
 	padding 0
 	display block

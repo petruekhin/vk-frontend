@@ -8,7 +8,6 @@
 	// common styles
 	position relative
 	border-radius 999px
-	font-family Roboto
 	display inline-flex
 	align-items center
 	justify-content center

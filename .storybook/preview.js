@@ -1,3 +1,5 @@
+import '../src/index.stylus'
+
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {
