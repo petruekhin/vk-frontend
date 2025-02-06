@@ -1,0 +1,49 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --borders-button-28-radius: 10px;
+  --borders-button-36-radius: 12px;
+  --borders-button-56-radius: 16px;
+  --borders-counter-8-width: 1px;
+  --borders-counter-12-width: 2px;
+  --borders-counter-16-width: 2px;
+  --borders-counter-20-width: 2px;
+  --borders-counter-24-width: 3px;
+  --colors-orange: #FF7700;
+  --colors-green: #2FB675;
+  --colors-gray: rgba(131, 102, 86);
+  --colors-bggray: rgba(131, 102, 86, 0.12);
+  --colors-lightgray: #F0EDEB;
+  --colors-outline: #0099FF;
+  --colors-white: #FFFFFF;
+  --colors-bgwhite: rgba(255, 255, 255, 0.12);
+  --colors-black: #000000;
+  --colors-primary-background: #FF7700;
+  --colors-primary-text: #FFFFFF;
+  --colors-secondary-background: #F0EDEB;
+  --colors-secondary-text: #000000;
+  --colors-button-primary-counter-background: rgba(255, 255, 255, 0.12);
+  --colors-button-secondary-counter-background: rgba(131, 102, 86, 0.12);
+  --colors-counter-primary-background: #2FB675;
+  --fonts-button-28-size: 13px;
+  --fonts-button-36-size: 15px;
+  --fonts-button-56-size: 17px;
+  --fonts-counter-8-size: 0;
+  --fonts-counter-12-size: 0;
+  --fonts-counter-16-size: 11px;
+  --fonts-counter-20-size: 13px;
+  --fonts-counter-24-size: 15px;
+  --spacing-button-28-padding: 6px 10px;
+  --spacing-button-28-gap: 4px;
+  --spacing-button-36-padding: 8px 12px;
+  --spacing-button-36-gap: 6px;
+  --spacing-button-56-padding: 16px 16px;
+  --spacing-button-56-gap: 8px;
+  --spacing-counter-8-padding: 0;
+  --spacing-counter-12-padding: 0;
+  --spacing-counter-16-padding: 0 4px;
+  --spacing-counter-20-padding: 0 4px;
+  --spacing-counter-24-padding: 0 6px;
+}
